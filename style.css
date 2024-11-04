@@ -1,0 +1,65 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff8dc; /* 背景颜色，作为背景图加载前或背景图无法完全覆盖时的填充色 */
+    font-family: 'Arial', sans-serif;
+    background-image: url('2.jpg'); /* 替换为您的图片路径 */
+    background-size: contain; /* 使背景图完整显示，但可能不会完全覆盖页面 */
+    background-position: center; /* 确保背景图在页面中心 */
+    background-repeat: no-repeat; /* 避免背景图重复 */
+}
+
+
+
+.envelope {
+    width: 60%;
+    max-width: 600px;
+    perspective: 1000px;
+}
+
+.letter {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    transform-origin: bottom;
+    transform: translateY(-20%) rotateX(45deg);
+    transition: transform 2s ease;
+    opacity: 0;
+    transition: opacity 2.5s ease;
+}
+
+
+.button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #f48fb1;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+
+@keyframes fall {
+    0% { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(100vh) rotate(360deg); }
+}
+
+.rose {
+    position: fixed;
+    width: 50px; /* 可以根据实际玫瑰花图片大小调整 */
+    animation-name: fall;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+/* 可以定义多个动画时长和延迟时间来让玫瑰花以不同的速度和时间间隔飘落 */
+.rose1 { animation-duration: 10s; }
+.rose2 { animation-duration: 15s; }
+.rose3 { animation-duration: 20s; }
