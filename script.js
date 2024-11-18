@@ -4,11 +4,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const typeSound = document.getElementById('type-sound');
     const messages = [
         "翟阳学习制作的第一个网页",
-        "",
-        "",
-        "",
-        "",
-        "",
+        "Q1：Envolope的倾角在code中的具体作用方式",
+        "Q2：Javascript中的rose代码没有在网页中呈现",
+        "Q3：Css中插入的music.wav在web中的播放问题",
+        "Q4：Index html中域名的炫彩特效",
+        "Q5：Trans？",
         "",
         "",
         "",
