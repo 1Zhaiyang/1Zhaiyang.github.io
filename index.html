@@ -1,36 +1,25 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>信封动画网页</title>
+    <title>信封展示页面</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <!-- 信封 -->
         <div class="envelope" id="envelope">
-            <div class="envelope-title">你的标题</div>
-            <button class="open-button" id="openButton">打开信封</button>
+            <h1 class="title">信封标题</h1>
+            <button class="open-envelope-btn" id="openEnvelopeBtn">点击打开</button>
         </div>
-
-        <!-- 信纸 -->
         <div class="letter" id="letter">
-            <div class="letter-content" id="letterContent">
-                <!-- 信纸内容 -->
-                <p class="page" data-page="1">这是第一页的内容。</p>
-                <p class="page" data-page="2" style="display: none;">这是第二页的内容。</p>
-                <!-- 添加更多页 -->
+            <div class="content" id="letterContent"></div>
+            <div class="navigation">
+                <button class="prev-btn" id="prevBtn">上一页</button>
+                <button class="next-btn" id="nextBtn">下一页</button>
             </div>
         </div>
-
-        <!-- 翻页按钮 -->
-        <div class="pagination">
-            <button id="prevPage" class="nav-button">上一页</button>
-            <button id="nextPage" class="nav-button">下一页</button>
-        </div>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
