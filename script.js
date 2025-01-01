@@ -1,69 +1,46 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const openButton = document.getElementById('openButton');
-    const envelope = document.getElementById('envelope');
-    const letter = document.getElementById('letter');
-    const letterContent = document.getElementById('letterContent');
-    const pages = document.querySelectorAll('.page');
-    const prevPageBtn = document.getElementById('prevPage');
-    const nextPageBtn = document.getElementById('nextPage');
-    const pagination = document.querySelector('.pagination');
-    let currentPage = 0;
+const openEnvelopeBtn = document.getElementById('openEnvelopeBtn');
+const envelope = document.getElementById('envelope');
+const letter = document.getElementById('letter');
+const letterContent = document.getElementById('letterContent');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
 
-    // 点击打开信封
-    openButton.addEventListener('click', () => {
-        console.log('打开按钮被点击'); // 调试日志
-        // 信封开启动画
-        envelope.style.transform = 'rotateX(180deg)';
-        // 显示信纸
-        setTimeout(() => {
-            envelope.style.display = 'none';
-            letter.style.display = 'flex';
-            pagination.style.display = 'flex';
-            showPage(currentPage);
-        }, 1000); // 与CSS transition时间一致
-    });
+let currentPage = 0;
+const pages = [
+    "这是第一页的内容，信纸上的文字会逐字显示。\n每个字会有动画效果。",
+    "这是第二页的内容，继续展示逐字效果。\n每一页的内容可以自由编辑。",
+    "这是第三页的内容，逐字显示。\n最后一页展示完成后，页面结束。"
+];
 
-    // 显示指定页
-    function showPage(pageIndex) {
-        pages.forEach((page, index) => {
-            if(index === pageIndex) {
-                page.style.display = 'block';
-                animateText(page);
-            } else {
-                page.style.display = 'none';
-            }
-        });
+openEnvelopeBtn.addEventListener('click', () => {
+    envelope.style.display = 'none';
+    letter.style.display = 'block';
+    showPage(currentPage);
+});
+
+function showPage(pageIndex) {
+    letterContent.innerHTML = '';
+    const content = pages[pageIndex];
+    let i = 0;
+    const interval = setInterval(() => {
+        letterContent.innerHTML += content.charAt(i);
+        i++;
+        if (i === content.length) {
+            clearInterval(interval);
+        }
+    }, 100);
+}
+
+prevBtn.addEventListener('click', () => {
+    if (currentPage > 0) {
+        currentPage--;
+        showPage(currentPage);
     }
+});
 
-    // 逐字显示文本
-    function animateText(page) {
-        const text = page.textContent;
-        page.innerHTML = '';
-        for(let i = 0; i < text.length; i++) {
-            const span = document.createElement('span');
-            span.textContent = text[i];
-            span.style.opacity = '0';
-            span.style.transition = `opacity 0.3s ease ${i * 0.05}s`;
-            page.appendChild(span);
-            setTimeout(() => {
-                span.style.opacity = '1';
-            }, i * 50);
-        }
+nextBtn.addEventListener('click', () => {
+    if (currentPage < pages.length - 1) {
+        currentPage++;
+        showPage(currentPage);
     }
-
-    // 翻到上一页
-    prevPageBtn.addEventListener('click', () => {
-        if(currentPage > 0) {
-            currentPage--;
-            showPage(currentPage);
-        }
-    });
-
-    // 翻到下一页
-    nextPageBtn.addEventListener('click', () => {
-        if(currentPage < pages.length -1) {
-            currentPage++;
-            showPage(currentPage);
-        }
-    });
 });
