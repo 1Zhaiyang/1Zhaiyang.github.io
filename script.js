@@ -8,10 +8,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 示例信件内容，分为多页
     const pages = [
-        "亲爱的朋友，\n\n希望这封信能找到你一切安好。",
-        "最近的天气变化无常，但我们的友谊却如同磐石般坚定。",
-        "期待与你再次相聚，共享美好时光。",
-        "祝你生活愉快，工作顺利。\n\n此致，\n敬礼！"
+        "",
+        "",
+        "",
+        "\n敬礼！"
     ];
 
     let currentPage = 0;
