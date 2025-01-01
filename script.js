@@ -11,8 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 点击打开信封
     openButton.addEventListener('click', () => {
+        console.log('打开按钮被点击'); // 调试日志
         // 信封开启动画
-        envelope.style.transform = 'rotateX(-180deg)';
+        envelope.style.transform = 'rotateX(180deg)';
         // 显示信纸
         setTimeout(() => {
             envelope.style.display = 'none';
