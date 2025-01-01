@@ -1,154 +1,102 @@
-/* 基本样式 */
-body, html {
+/* styles.css */
+body {
     margin: 0;
-    padding: 0;
-    height: 100%;
-    font-family: "微软雅黑", Arial, sans-serif;
-    background-color: #f0f0f0;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.container {
-    position: relative;
-    width: 90%;
-    max-width: 600px;
-    height: 80%;
-    max-height: 800px;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    border-radius: 10px;
+    min-height: 100vh;
+    background-color: #f0f0f5;
+    font-family: 'Noto Serif SC', serif;
     overflow: hidden;
 }
 
-/* 信封样式 */
-.envelope {
+#envelope - container {
+    position: relative;
+    width: 90vw;
+    max-width: 600px;
+    height: 80vh;
+    max-height: 800px;
+}
+
+#envelope {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-image: url('https://i.imgur.com/4AI6VbD.png'); /* 使用在线信封图片 */
+    background-image: url('https://images.unsplash.com/photo - 1593642634362 - 50c96a70d966?ixlib = rb - 4.0.3&ixid = MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto = format&fit = crop&w = 1470&q = 80');
     background-size: cover;
     background-position: center;
-    background-color: #ffcc00; /* 临时背景颜色 */
-    transition: transform 1s ease, opacity 1s ease;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex - direction: column;
+    justify-content: space - between;
     align-items: center;
-    border: 2px solid red; /* 临时边框，用于调试 */
 }
 
-.envelope.hidden {
-    transform: translateY(-100%);
-    opacity: 0;
-    pointer-events: none;
+#envelope - title {
+    color: white;
+    text - shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    font - size: 2em;
+    margin - top: 20px;
 }
 
-.envelope-title {
-    font-size: 1.5em;
-    color: #333;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.open-button {
-    padding: 10px 20px;
-    font-size: 1em;
-    background-color: #ffcc00;
+#open - envelope {
+    padding: 15px 30px;
+    font - size: 1.2em;
+    background - color: #fff;
     border: none;
-    border-radius: 5px;
+    border - radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    box - shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    transition: background - color 0.3s ease;
 }
 
-.open-button:hover {
-    background-color: #e6b800;
+#open - envelope:hover {
+    background - color: #f0f0f0;
 }
 
-/* 信纸样式 */
-.letter {
-    position: absolute;
-    width: 90%;
-    height: 80%;
-    background-color: #fffbe6;
-    border: 2px solid #f0e68c;
-    border-radius: 5px;
-    padding: 20px;
-    box-sizing: border-box;
-    display: none;
-    overflow: hidden;
-    animation: fadeIn 1s forwards;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.letter-content {
-    font-size: 1.2em;
-    line-height: 1.6em;
-    color: #333;
-    min-height: 200px;
-    position: relative;
-}
-
-.letter-content span {
-    opacity: 0;
-    position: relative;
-    animation: fadeInLetter 0.3s forwards;
-}
-
-@keyframes fadeInLetter {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* 翻页按钮样式 */
-.navigation {
+#letter - paper {
     position: absolute;
     width: 100%;
-    bottom: 10px;
+    height: 100%;
+    background - color: white;
+    border - radius: 10px;
+    box - shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     display: flex;
-    justify-content: space-between;
-    padding: 0 20px;
-    box-sizing: border-box;
+    flex - direction: column;
+    justify-content: space - between;
+    padding: 20px;
+}
+
+.page {
     display: none;
+    line - height: 1.6;
+    font - size: 1.2em;
 }
 
-.nav-button {
-    padding: 8px 16px;
-    font-size: 1em;
-    background-color: #87cefa;
+.page.current {
+    display: block;
+}
+
+.page - button {
+    padding: 10px 20px;
+    font - size: 1em;
+    background - color: #fff;
     border: none;
-    border-radius: 5px;
+    border - radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    box - shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    transition: background - color 0.3s ease;
 }
 
-.nav-button:hover {
-    background-color: #00bfff;
+#prev - page {
+    align - self: flex - start;
 }
 
-/* 移动端适配 */
-@media (max-width: 600px) {
-    .container {
-        width: 100%;
-        height: 100%;
-        border-radius: 0;
-    }
+#next - page {
+    align - self: flex - end;
+}
 
-    .envelope-title {
-        font-size: 1.2em;
-    }
-
-    .open-button, .nav-button {
-        font-size: 0.9em;
-        padding: 8px 16px;
-    }
-
-    .letter-content {
-        font-size: 1em;
-    }
+.page - button:hover {
+    background - color: #f0f0f0;
 }
