@@ -1,4 +1,6 @@
 // JavaScript部分
+console.log("script.js 已加载");
+
 document.addEventListener('DOMContentLoaded', function() {
     const openButton = document.getElementById('openButton');
     const envelope = document.getElementById('envelope');
