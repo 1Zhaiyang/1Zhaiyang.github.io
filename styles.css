@@ -1,151 +1,120 @@
-/* 样式文件 styles.css */
-
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f3f4f6;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    flex-direction: column;
-}
-
-#envelope {
-    position: relative;
-    width: 300px;
-    height: 200px;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: all 1s ease-in-out;
-}
-
-.envelope-img {
+body, html {
     width: 100%;
-    height: auto;
-    position: absolute; /* 让图片保持在容器内 */
-    top: 0;
-    left: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
 }
 
-.envelope-title {
-    font-size: 24px;
-    color: #333;
-    position: absolute; /* 让标题浮动在图片上方 */
-    z-index: 10;
-}
-
-.envelope-btn {
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: #fff;
-    border: none;
-    border-radius: 5px;
-    position: absolute; /* 按钮浮动在图片上 */
-    bottom: 20px;
-    z-index: 10;
-}
-
-#envelope {
-    background-color: #ffeb3b;
-    width: 300px;
-    height: 200px;
-    border-radius: 15px;
+.container {
     position: relative;
-    overflow: hidden;
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: all 1s ease-in-out;
+}
+
+.envelope {
+    position: absolute;
+    width: 200px;
+    height: 150px;
+    background: #c0392b;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 1s;
 }
 
 .envelope-title {
-    font-size: 24px;
-    color: #333;
+    color: #fff;
+    font-size: 20px;
+    margin-bottom: 20px;
 }
 
-.envelope-btn {
+.open-button {
     padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: #fff;
+    background: #e74c3c;
+    color: #fff;
     border: none;
-    border-radius: 5px;
-    transition: all 0.3s ease;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 16px;
 }
 
-.envelope-btn:hover {
-    background-color: #e0e0e0;
-}
-
-.hidden {
-    display: none;
-}
-
-#letter {
-    position: relative;
+.letter {
+    position: absolute;
     width: 80%;
     max-width: 600px;
-    height: auto;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    min-height: 300px;
+    background: #fff8dc;
     padding: 20px;
-    font-size: 20px;
-    color: #333;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .letter-content {
-    padding: 10px;
+    width: 100%;
+    font-size: 18px;
+    line-height: 1.6;
 }
 
-#navigation {
+.page {
+    display: none;
+}
+
+.pagination {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
+    padding: 0 20px;
+    display: none;
 }
 
-.nav-btn {
-    padding: 10px 15px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: #ffeb3b;
+.nav-button {
+    padding: 10px 20px;
+    background: #2980b9;
+    color: #fff;
     border: none;
-    border-radius: 5px;
-    transition: all 0.3s ease;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 16px;
 }
 
-.nav-btn:hover {
-    background-color: #e0e0e0;
-}
-
-/* 手机端适配 */
-@media (max-width: 768px) {
-    #envelope {
-        width: 80%;
-        height: 160px;
+@media (max-width: 600px) {
+    .envelope {
+        width: 150px;
+        height: 120px;
     }
 
-    .envelope-btn {
+    .envelope-title {
+        font-size: 16px;
+    }
+
+    .open-button, .nav-button {
         font-size: 14px;
-        padding: 8px 15px;
+        padding: 8px 16px;
     }
 
-    #letter {
+    .letter {
         width: 90%;
-        font-size: 18px;
+        min-height: 250px;
     }
 
-    .nav-btn {
-        padding: 8px 12px;
-        font-size: 14px;
+    .letter-content {
+        font-size: 16px;
     }
 }
