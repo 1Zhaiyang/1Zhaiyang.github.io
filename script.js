@@ -40,6 +40,8 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     let currentPage = 0;
+    let typingTimeout = null; // To track the current typing timeout
+    let isTyping = false; // To track if typing is in progress
 
     // 打开信封动画
     openButton.addEventListener('click', () => {
@@ -53,9 +55,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 显示当前页内容，逐字显示
     function displayPage(pageIndex) {
+        // Clear any ongoing typing
+        if (typingTimeout) {
+            clearTimeout(typingTimeout);
+            typingTimeout = null;
+        }
+
+        // Reset the content
         letterContent.innerHTML = '';
         const text = pages[pageIndex];
         let index = 0;
+        isTyping = true;
+
+        // Disable navigation buttons during typing
+        prevPage.disabled = true;
+        nextPage.disabled = true;
 
         function typeChar() {
             if (index < text.length) {
@@ -66,7 +80,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     letterContent.innerHTML += char;
                 }
                 index++;
-                setTimeout(typeChar, 50); // 每个字出现的间隔时间
+                // Continue typing
+                typingTimeout = setTimeout(typeChar, 50); // 每个字出现的间隔时间
+            } else {
+                // Typing finished
+                isTyping = false;
+                prevPage.disabled = false;
+                nextPage.disabled = false;
+                typingTimeout = null;
             }
         }
 
@@ -76,6 +97,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // 翻到上一页
     prevPage.addEventListener('click', () => {
         if (currentPage > 0) {
+            // If typing is in progress, cancel it and display the new page
+            if (isTyping) {
+                clearTimeout(typingTimeout);
+                typingTimeout = null;
+                isTyping = false;
+            }
             currentPage--;
             displayPage(currentPage);
         }
@@ -84,6 +111,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // 翻到下一页
     nextPage.addEventListener('click', () => {
         if (currentPage < pages.length -1) {
+            // If typing is in progress, cancel it and display the new page
+            if (isTyping) {
+                clearTimeout(typingTimeout);
+                typingTimeout = null;
+                isTyping = false;
+            }
             currentPage++;
             displayPage(currentPage);
         }
