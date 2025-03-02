@@ -6,6 +6,31 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="password-container" id="passwordContainer">
+        <h2>请输入密码</h2>
+        <input type="password" id="passwordInput" placeholder="输入密码">
+        <button id="submitPassword">提交</button>
+    </div>
+
+    <div class="envelope-container hidden" id="envelopeContainer">
+        <div class="envelope" id="envelope">
+            <div class="envelope-title">翟爷爷亲启</div>
+            <button class="open-button" id="openButton">打开信封</button>
+        </div>
+    </div>
+    
+    <div class="letter-container hidden" id="letterContainer">
+        <div class="letter" id="letter">
+            <p id="letterContent"></p>
+        </div>
+        <div class="navigation">
+            <button id="prevPage" class="nav-button">上一页</button>
+            <button id="nextPage" class="nav-button">下一页</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    
     <div class="envelope-container">
         <div class="envelope" id="envelope">
             <div class="envelope-title">翟爷爷亲启</div>
